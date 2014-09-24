@@ -47,6 +47,8 @@ var beanstalkd = {
 				_this.kickoff();
 			}, this.interval);
 
+			return this;
+
 		}
 
 		// Return JSON data from the provided URL
@@ -60,7 +62,7 @@ var beanstalkd = {
 			request.onreadystatechange = function() {
 				if (this.readyState === 4){
 					if (this.status >= 200 && this.status < 400){
-						//try {
+						try {
 
 							var json = JSON.parse(this.responseText);
 
@@ -97,9 +99,9 @@ var beanstalkd = {
 								callback(_this.queueObjects[i], json[i].jobs_complete, _this);
 							}
 
-						// } catch (err) {
-						// 	if(_this.debug) console.log(err);
-						// }
+						} catch (err) {
+						 	if(_this.debug) console.log(err);
+						}
 					} else {
 						if(_this.debug) console.log("Invalid URL or status code over 400.");
 					}
@@ -171,6 +173,20 @@ var beanstalkd = {
 			if(_this.debug) console.log(obj);
 		}
 
+		// return needed data
+		this.getUpdates = function() {
+			return this.queueObjects;
+		}
+
+		// return update based on queue name
+		this.getUpdate = function(name) {
+			for(i in this.queueObjects) {
+				if(this.queueObjects[i].qname == name) {
+					return this.queueObjects[i];
+				}
+			}
+		}
+
 	},
 
 	// Object to hold all of the queue in!
@@ -236,7 +252,3 @@ var beanstalkd = {
 	}
 
 };
-
-var test = new beanstalkd.beanstalkd("/api/orgsync/public/syncstatus", 3, true);
-
-test.kickoff();
