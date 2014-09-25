@@ -40,6 +40,8 @@ Accessing the name of queue would look like so...
 myQueue.qname;
 ```
 
+## Returning The Proper JSON
+
 You do have to return the following JSON however you choose. In PHP it would look like this. If you have gone about
 implimenting this in another langauge please add it to this readme as well to make it easy for others.
 
