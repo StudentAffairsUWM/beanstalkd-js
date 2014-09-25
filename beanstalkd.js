@@ -165,7 +165,7 @@ var beanstalkd = {
 					obj.lastFinished = new Date().getTime();
 
 					// Fingure out the percent of the sync remaining.
-					obj.percentComplete = Math.round(obj.jobs_complete / obj.jobs_total) * 100;
+					obj.percentComplete = Math.round(obj.jobs_complete / obj.jobs_total * 100);
 
 				}
 
