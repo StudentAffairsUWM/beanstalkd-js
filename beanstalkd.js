@@ -164,6 +164,9 @@ var beanstalkd = {
 					obj.minutesRemaining = (calcAverageRemaining == 0) ? 9999 : Math.round(calcAverageRemaining/totalInAverage);
 					obj.lastFinished = new Date().getTime();
 
+					// Fingure out the percent of the sync remaining.
+					obj.percentComplete = Math.round(obj.jobs_complete / obj.jobs_total) * 100;
+
 				}
 
 			}
@@ -217,6 +220,8 @@ var beanstalkd = {
 
 		this.finished = false;
 
+		// Look into removing this all together.
+		// Should be replaceable with running.
 		this.syncInProgress = false;
 
 		this.lastFinished = 0;
