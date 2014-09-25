@@ -165,7 +165,7 @@ var beanstalkd = {
 					obj.lastFinished = new Date().getTime();
 
 					// Fingure out the percent of the sync remaining.
-					obj.percentComplete = Math.round(obj.jobs_complete / obj.jobs_total) * 100;
+					obj.percentComplete = Math.round(obj.jobs_complete / obj.jobs_total * 100);
 
 				}
 
@@ -255,6 +255,8 @@ var beanstalkd = {
 			this.finished = true;
 			this.minutesRemaining = 0;
 			this.lastTenTimes = [];
+			this.running = false;
+			this.percentComplete = 0;
 		}
 
 		this.setLastTenTimes = function(data) {
