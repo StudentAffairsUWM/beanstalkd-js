@@ -1,0 +1,24 @@
+{
+  "name": "beanstalkd-js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/StudentAffairsUWM/beanstalkd-js",
+  "description": "Retrieve information for your users about their Beanstalkd queues.",
+  "main": "beanstalkd.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "beanstalkd"
+  ],
+  "authors": [
+    "Student Affairs IT"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
