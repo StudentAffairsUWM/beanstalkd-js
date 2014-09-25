@@ -3,9 +3,8 @@
  * -------------
  * This module is used for getting current data about
  * a beanstalkd queue your applications backend is utilizing.
- * It required that your backend return JSON in the form of...
- * 
- * []
+ * It required that your backend return JSON in a specific form.
+ * Please look at the readme.md for more info.
  *
  * It will then return an object telling you how much is left and
  * how long it will take until the queue has completely finished.
@@ -18,11 +17,10 @@ var beanstalkd = {
 	beanstalkd: function(url, interval, debug) {
 
 		/**
-		 * @param url - URL we are getting JSON from
-		 * @param interval - Time in seconds before next call
-		 * @param debug - show debug infromation to see whats up
-		 * @param queueObjects - last json object that was calculated
-		 * @param initial - keep track if we need to create all objects
+		 * @param String url - URL we are getting JSON from
+		 * @param Integer interval - Time in seconds before next call
+		 * @param Boolean debug - show debug infromation to see whats up
+		 * @param queueObject queueObjects - last json object that was calculated
 		 **/
 
 		 this.url = url;
@@ -197,6 +195,16 @@ var beanstalkd = {
 	// @param total - number of jobs in the queue
 	queueObject: function(qname, running, jobs, total) {
 
+		/**
+		 * @param String qname - name of the queue
+		 * @param Boolean running - is the queue currently running
+		 * @param Integer jobs_complete - number of jobs that have completed
+		 * @param Integer jobs_total - number of jobs total
+		 * @param Boolean finished - is the queue done processing
+		 * @param Boolean syncInProgress - is the queue processing something
+		 * @param Integer minutesRemaining - time till queue is done
+		 * @param Integer percentComplete - percent finished
+		 **/
 		this.qname = qname;
 
 		this.running = running;
