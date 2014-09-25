@@ -37,7 +37,7 @@ The following will return an array to the myQueue variable. From here you can ac
 Accessing the name of queue would look like so...
 
 ```js
-myQueue.qname;
+myQueue[0].qname;
 ```
 
 ## Returning The Proper JSON
